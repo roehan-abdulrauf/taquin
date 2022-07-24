@@ -1,0 +1,28 @@
+body {
+
+    background-color: #c4bdbd;
+}
+h2{
+    font-weight:normal;
+    text-align:center;
+    color: white;
+    font-style:oblique;
+    color:  brown;
+
+}
+
+h3{
+    font-weight:normal;
+    margin:3px 0px;
+    text-align:center;
+    color:  rgb(42, 107, 150);
+}
+
+
+button{
+    cursor: pointer;
+  }
+
+.imgsolution{
+    margin-top: 1rem;
+  }

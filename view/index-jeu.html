@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Le Taquin</title>
+    <meta charset="UTF-8" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/image-puzzle.css" rel="stylesheet" />
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/image-puzzle.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <div id="collage">
+      <h2>Le Taquin</h2>
+      <hr />
+      <div id="playPanel" style="padding: 5px; display: none">
+        <h3 id="imgTitle"></h3>
+        <hr />
+        <div
+          style="
+            display: inline-block;
+            margin: auto;
+            width: 95%;
+            vertical-align: top;
+          "
+        >
+          <ul id="sortable" class="sortable"></ul>
+          <div id="actualImageBox">
+            <div id="stepBox">
+              <div>Mouvements:</div>
+              <div class="stepCount">0</div>
+            </div>
+            <div id="timeBox">temps: <span id="timerPanel"></span> seconds</div>
+            <img id="actualImage" />
+            <div>Regarde et résout le jeu en déplaçant les images</div>
+            <button id="hideshomimg" onclick="affichercodecodecoach()" class="imgsolution">Cacher la solution</button>
+            <p id="levelPanel">
+              <input
+                type="radio"
+                name="level"
+                id="easy"
+                checked="checked"
+                value="3"
+              />
+              <label for="easy">Taquin 3 x 3</label>
+              <input type="radio" name="level" id="medium" value="4" />
+              <label for="medium">Taquin 4 x 4</label>
+              <input type="radio" name="level" id="hard" value="5" />
+              <label for="hard">Taquin 5 x 5</label>
+              <input type="radio" name="level" id="veryhard" value="6" />
+              <label for="veryhard">Taquin 6 x 6</label>
+            </p>
+            <div>
+              <button id="btnRule" type="button" class="btn" onclick="rules();">
+                Règle
+              </button>
+              <button id="newPhoto" type="button" class="btn">
+                Image suivante
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="gameOver" style="display: none">
+        <div
+          style="
+            background-color: #fc9e9e;
+            padding: 5px 10px 20px 10px;
+            text-align: center;
+          "
+        >
+          <h2 style="text-align: center">Bien jouer !!</h2>
+          Tu as réussis <br />
+          <br />
+          Mouvement: <span class="stepCount">0</span> Mouvements.
+          <br />
+          Temps passé: <span class="timeCount">0</span> secondes<br />
+          <div>
+            <button type="button" onclick="window.location.reload(true);">
+              Rejouer
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        var images = [
+          { src: "../img/demonslayer.jpg", title: "Demon Slayer" },
+          { src: "../img/onepiece.jpg", title: "One Piece" },
+          { src: "../img/jujutsukaisen.jpg", title: "Jujutsu Kaisen" },
+          { src: "../img/hunterXhunter.jpg", title: "Hunter X Hunter" },
+          { src: "../img/tokyoghoul.jpg", title: "Tokyo Ghoul" },
+          { src: "../img/nogamenolife.jpg", title: "No Game No Life" },
+          { src: "../img/myheroacademia", title: "My Hero Academia" },
+          { src: "../img/naruto1", title: "Naruto" },
+          { src: "../img/gojo", title: "Gojo" }
+        ];
+
+        $(function game() {
+          var gridSize = $("#levelPanel :radio:checked").val();
+          imagePuzzle.startGame(images, gridSize);
+          $("#newPhoto").click(function () {
+            var gridSize = $("#levelPanel :radio:checked").val();
+            imagePuzzle.startGame(images, gridSize);
+          });
+
+          $("#levelPanel :radio").change(function (e) {
+            var gridSize = $(this).val();
+            imagePuzzle.startGame(images, gridSize);
+          });
+        });
+        function rules() {
+          alert(
+            "Réorganisez les pièces afin d obtenir un exemple d image. \nLes pas effectués sont comptés"
+          );
+        }
+      </script>
+    </div>
+    <footer></footer>
+  </body>
+</html>
